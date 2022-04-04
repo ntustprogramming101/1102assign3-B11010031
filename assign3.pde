@@ -307,7 +307,6 @@ void keyPressed(){
 
       case 'd':
       if(playerHealth < 5) playerHealth ++;
-      println(playerHealth);
       break;
     }
 
