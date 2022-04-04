@@ -93,7 +93,7 @@ void draw() {
 				gameState = GAME_RUN;
 				mousePressed = false;
 			}
-
+ 
 		}else{
 
 			image(startNormal, START_BUTTON_X, START_BUTTON_Y);
