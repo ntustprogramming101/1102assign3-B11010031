@@ -200,8 +200,7 @@ void draw() {
      }
         
 
-
-		// Player
+	// Player
     //groundhog
       groundhogIdleImg=loadImage("img/groundhogIdle.png");
     
