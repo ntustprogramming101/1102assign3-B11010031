@@ -13,7 +13,7 @@ PImage title, gameover, startNormal, startHovered, restartNormal, restartHovered
 PImage bg, soil8x24;
 
 // For debug function; DO NOT edit or remove this!
-int playerHealth = 1;
+int playerHealth = 2;
 float cameraOffsetY = 0;
 boolean debugMode = false;
 
@@ -208,9 +208,14 @@ void draw() {
       groundhogIdleImg=loadImage("img/groundhogIdle.png");
     
     // Health UI
-     for(int i=playerHealth ; i> 0 ; i--){
-         image(life, i*70-50, healthY);}
+    for(int i=0;i<playerHealth;i++){
+      image(life,10+i*70,10);
+    }
          
+     if( playerHealth == 0){
+          gameState = GAME_OVER;
+          println(playerHealth);
+        }
     //move
   if(animation<15){
     animation++;
@@ -256,10 +261,7 @@ void draw() {
       image(groundhogDownImg,groundhogIdleX,groundhogIdleY);      
 
       
-   // life set
-        if( playerHealth == 0){
-          gameState = GAME_OVER;
-        }
+
  break;
   }
 
@@ -279,6 +281,7 @@ void draw() {
 			if(mousePressed){
 				gameState = GAME_RUN;
 				mousePressed = false;
+        playerHealth = 2;
 				// Remember to initialize the game here!
 			}
 		}else{
