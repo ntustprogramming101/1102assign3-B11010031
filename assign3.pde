@@ -13,7 +13,7 @@ PImage title, gameover, startNormal, startHovered, restartNormal, restartHovered
 PImage bg, soil8x24;
 
 // For debug function; DO NOT edit or remove this!
-int playerHealth = 0;
+int playerHealth = 1;
 float cameraOffsetY = 0;
 boolean debugMode = false;
 
@@ -93,7 +93,7 @@ void draw() {
 				gameState = GAME_RUN;
 				mousePressed = false;
 			}
- 
+
 		}else{
 
 			image(startNormal, START_BUTTON_X, START_BUTTON_Y);
@@ -196,11 +196,14 @@ void draw() {
            image(stone2, st3X-80, 1360+st3Y);
            image(stone2, st3X-320, 1360+st3Y);
            image(stone2, st3X-560, 1360+st3Y);
+           
+           
        
      }
         
 
-	// Player
+
+		// Player
     //groundhog
       groundhogIdleImg=loadImage("img/groundhogIdle.png");
     
@@ -251,7 +254,13 @@ void draw() {
       break;
     case groundhog_DOWN:
       image(groundhogDownImg,groundhogIdleX,groundhogIdleY);      
-      break;
+
+      
+   // life set
+        if( playerHealth == 0){
+          gameState = GAME_OVER;
+        }
+ break;
   }
 
 
@@ -306,6 +315,7 @@ void keyPressed(){
 
       case 'd':
       if(playerHealth < 5) playerHealth ++;
+      println(playerHealth);
       break;
     }
 
@@ -334,8 +344,12 @@ void keyReleased(){
                 break;
               case DOWN:
                 groundhogState = groundhog_DOWN;
-                if(groundhogIdleY + groundhogIdleWidth > 2080 ) 
-                groundhogIdleY =2080-groundhogIdleWidth;
+                if(groundhogIdleY + groundhogIdleWidth > 2075 ) {
+                groundhogIdleY =2000;
+                groundhogState = groundhog_IDLE ;
+                }
+                
+                println(groundhogIdleY);
                 break;
                 }
                }
