@@ -214,7 +214,6 @@ void draw() {
          
      if( playerHealth == 0){
           gameState = GAME_OVER;
-          println(playerHealth);
         }
     //move
   if(animation<15){
